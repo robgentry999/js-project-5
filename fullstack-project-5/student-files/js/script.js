@@ -85,14 +85,6 @@ function displayModal(index) {
 
     const getModal = document.querySelector('.modal-container');
     const getCloseButton = document.getElementById('modal-close-btn');
-
-    getCloseButton.addEventListener('click', (e) => {
-      const strong = document.querySelector('strong');
-  
-      if (e.target == getCloseButton || strong) {
-        getModal.remove();
-      } 
-    });
 };
 
 getJson();
