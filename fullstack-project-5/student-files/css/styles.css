@@ -126,7 +126,6 @@ h1{
     color: red;
 }
 .modal-container{
-    display: none;
     position: fixed;
     top: 0;
     right: 0;
@@ -134,7 +133,11 @@ h1{
     left: 0;
     background: rgba(0, 0, 0, 0.7);
 }
-
+.container{
+    position:fixed;
+    top: 50;
+    right: 50;
+}
 .modal {
     position: relative;
     width: 95%;

@@ -3,11 +3,12 @@ const galleryDiv = document.getElementById('gallery');
 let apiInfo = [];
 const body = document.querySelector('body');
 const employeeCard = document.querySelectorAll('.card');
-const modalContainer = document.querySelector('.modal-container');
+const modalContainer = document.querySelector('.container');
 
 //gets 12 employees information
 function getJson() {
 fetch(urlAPI)
+.then(modalContainer.style.display = 'none')   
 .then(response => response.json())
 .then(response => response.results)
 .then(createEmployeeHtml)
@@ -73,18 +74,23 @@ function displayModal(index) {
     <p class="modal-text">Birthday: ${date.getMonth()}/${date.getDate()}/${date.getFullYear()}</p>
     </div>
     </div>
-    <div class="modal-btn-container">
-    <button type="button" id="modal-prev" class="modal-prev btn">Prev</button>
-    <button type="button" id="modal-next" class="modal-next btn">Next</button>
-    </div>
     `;
     
     console.log(modalHTML);
-    body.insertAdjacentHTML('beforeend', modalHTML);
-    body.style.display = 'block';
-
+    console.log(modalContainer);
+    modalContainer.insertAdjacentHTML('beforeend', modalHTML);
+    modalContainer.style.display = 'block';
+    
     const getModal = document.querySelector('.modal-container');
     const getCloseButton = document.getElementById('modal-close-btn');
+
+    getCloseButton.addEventListener('click', (e) => {
+      const strong = document.querySelector('strong');
+  
+      if (e.target == getCloseButton || strong) {
+        getModal.remove();
+      } 
+    });
 };
 
 getJson();
